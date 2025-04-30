@@ -10,5 +10,5 @@ public class TemperaturaApp {
 		tela.criarTela("Conversor DS1M-A");
 
 	}
-
+	
 }

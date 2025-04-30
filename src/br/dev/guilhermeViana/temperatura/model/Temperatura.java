@@ -15,13 +15,17 @@ public class Temperatura {
 	}
 
 	public double converterParaFahrenheit() {
-		double Fahrenheit = celsius * 1.8 + 32;
+		double Fahrenheit = celsius * (9 / 5) + 32;
 		return Fahrenheit;
 	}
 
 	public double converterParaKelvin() {
 		double Kelvin = celsius + 273.15;
 		return Kelvin;
+	}
+	
+	public String[] mostrarTemperaturaKelvin() {
+		return (null);
 	}
 
 	public void teste() {
