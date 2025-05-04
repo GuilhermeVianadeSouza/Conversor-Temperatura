@@ -70,21 +70,50 @@ public class TelaConversor {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				String Celsius = textCelsius.getText();
-				
-				
+				if (!(Celsius.indexOf(",") == -1)) {
+					Celsius = Celsius.replace(",", ".");
+				}
+				if (!(Celsius.indexOf(" ") == -1)) {
+					Celsius = Celsius.replace(" ", "");
+					String mensagemDeErro = "none";
+				}
 				
 				double celsiusDouble = Double.parseDouble(Celsius);
 				
 				Temperatura temperatura = new Temperatura();
-				temperatura.setCelsius(celsiusDouble);
-				temperatura.getCelsius();
+				temperatura.setCelsius(Double.parseDouble(Celsius));
+				temperatura.converterParaKelvin();			
+				double Kelvin = temperatura.converterParaKelvin();
+				String resultado = Kelvin+"kelvin";
 				
-				
+				labelResultado.setText(resultado);
 				
 				
 				
 			}
 		});
+		
+		buttonFahreinheit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String Celsius = textCelsius.getText();
+				if (!(Celsius.indexOf(",") == -1)) {
+					Celsius = Celsius.replace(" ", "");
+					String mensagemDeErro = "none";
+				}
+				Temperatura temperatura = new Temperatura();
+				temperatura.setCelsius(Double.parseDouble(Celsius));
+				temperatura.converterParaFahrenheit();
+				double Fahrenheit = temperatura.converterParaFahrenheit();
+				String resultado = Fahrenheit+"fahrenheit";
+				
+				labelResultado.setText(resultado);
+			}
+			//tentando salvar no git
+		});
+	
 		
 		tela.setVisible(true);
 	}	
