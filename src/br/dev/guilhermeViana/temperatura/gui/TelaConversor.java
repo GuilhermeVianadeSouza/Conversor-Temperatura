@@ -3,6 +3,7 @@ import br.dev.guilhermeViana.temperatura.model.Temperatura;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import br.dev.guilhermeViana.temperatura.model.Temperatura;
@@ -25,12 +26,16 @@ public class TelaConversor {
 		this.conversorDeTemperatura = conversorDeTemperatura;
 		JFrame tela = new JFrame();
 		tela.setTitle(conversorDeTemperatura);
-		tela.setSize(500, 650);
+		tela.setSize(500, 400);
 		tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		tela.setResizable(false);
 		tela.setLayout(null);
 		
 		Container container = tela.getContentPane();
+		
+		Font fontePrincipal = new Font("Arial", Font.ITALIC, 32);
+		Font fonteResultado = new Font("Arial", Font.ITALIC, 24);
+		Font fonteErro = new Font("Arial", Font.ITALIC, 18);
 		
 		labelCelsius = new JLabel();
 		labelCelsius.setText("Temperatura em graus celsius");
@@ -51,10 +56,10 @@ public class TelaConversor {
 		labelResultado.setText("Resultado");
 		labelResultado.setBounds(140, 200, 90, 50);
 		
-		labelMensagemErro = new JLabel();
-		labelMensagemErro.setText("Erro. Utilizar apenas números válidos.");
+		labelMensagemErro = new JLabel("Erro. Utilizar apenas números válidos.");
 		labelMensagemErro.setForeground(Color.red);
 		labelMensagemErro.setBounds(200, 150, 200, 70);
+		labelMensagemErro.setFont(fonteErro);
 		
 		
 		container.add(buttonKelvin);
@@ -69,6 +74,9 @@ public class TelaConversor {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				try {
+					labelMensagemErro.setVisible(false);
+				
 				String Celsius = textCelsius.getText();
 				if (!(Celsius.indexOf(",") == -1)) {
 					Celsius = Celsius.replace(",", ".");
@@ -78,6 +86,7 @@ public class TelaConversor {
 					String mensagemDeErro = "none";
 				}
 				
+				
 				double celsiusDouble = Double.parseDouble(Celsius);
 				
 				Temperatura temperatura = new Temperatura();
@@ -86,9 +95,18 @@ public class TelaConversor {
 				double Kelvin = temperatura.converterParaKelvin();
 				String resultado = Kelvin+"kelvin";
 				
+				labelResultado.setVisible(true);
 				labelResultado.setText(resultado);
 				
-				
+} catch (NumberFormatException exception) {
+					
+					//Esconde o resultado anterior, se tiver
+					labelResultado.setVisible(false);
+					
+					//Deixa a mensagem de erro visivel.
+					labelMensagemErro.setVisible(true);
+					
+				}
 				
 			}
 		});
@@ -98,6 +116,9 @@ public class TelaConversor {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				try {
+				labelMensagemErro.setVisible(false);
+					
 				String Celsius = textCelsius.getText();
 				if (!(Celsius.indexOf(",") == -1)) {
 					Celsius = Celsius.replace(" ", "");
@@ -109,11 +130,17 @@ public class TelaConversor {
 				double Fahrenheit = temperatura.converterParaFahrenheit();
 				String resultado = Fahrenheit+"fahrenheit";
 				
+				labelResultado.setVisible(true);
 				labelResultado.setText(resultado);
+				
+	} catch (NumberFormatException excepcion) {
+		
+		labelResultado.setVisible(false);
+		labelMensagemErro.setVisible(true);
+	}
+				
 			}
-			//tentando salvar no git
 		});
-	
 		
 		tela.setVisible(true);
 	}	
