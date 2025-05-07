@@ -26,40 +26,44 @@ public class TelaConversor {
 		this.conversorDeTemperatura = conversorDeTemperatura;
 		JFrame tela = new JFrame();
 		tela.setTitle(conversorDeTemperatura);
-		tela.setSize(500, 400);
+		tela.setSize(500, 300);
 		tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		tela.setResizable(false);
 		tela.setLayout(null);
 		
 		Container container = tela.getContentPane();
 		
-		Font fontePrincipal = new Font("Arial", Font.ITALIC, 32);
+		Font fontePrincipal = new Font("Arial", Font.ITALIC, 28);
 		Font fonteResultado = new Font("Arial", Font.ITALIC, 24);
 		Font fonteErro = new Font("Arial", Font.ITALIC, 18);
 		
 		labelCelsius = new JLabel();
 		labelCelsius.setText("Temperatura em graus celsius");
-		labelCelsius.setBounds(150, 10, 500, 30);
+		labelCelsius.setFont(fontePrincipal);
+		labelCelsius.setBounds(50, 10, 500, 30);
 		
 		textCelsius = new JTextField();
-		textCelsius.setBounds(10, 50, 250, 35);
+		textCelsius.setBounds(80, 50, 300, 35);
 		
 		buttonFahreinheit = new JButton();
 		buttonFahreinheit.setText("Fahreinheit");
-		buttonFahreinheit.setBounds(10, 90, 110, 40);
+		buttonFahreinheit.setBounds(70, 90, 150, 40);
 		
 		buttonKelvin = new JButton();
 		buttonKelvin.setText("Kelvin");
-		buttonKelvin.setBounds(140, 90, 110, 40);
+		buttonKelvin.setBounds(230, 90, 150, 40);
 		
 		labelResultado = new JLabel();
 		labelResultado.setText("Resultado");
-		labelResultado.setBounds(140, 200, 90, 50);
+		labelResultado.setBounds(150, 120, 350, 70);
+		labelResultado.setFont(fonteResultado);
+		labelResultado.setVisible(false);
 		
 		labelMensagemErro = new JLabel("Erro. Utilizar apenas números válidos.");
 		labelMensagemErro.setForeground(Color.red);
-		labelMensagemErro.setBounds(200, 150, 200, 70);
+		labelMensagemErro.setBounds(70, 120, 350, 70);
 		labelMensagemErro.setFont(fonteErro);
+		labelMensagemErro.setVisible(false);
 		
 		
 		container.add(buttonKelvin);
