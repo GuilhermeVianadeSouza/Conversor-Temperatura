@@ -9,27 +9,20 @@ public class Temperatura {
 		return celsius;
 	}
 
-	// setcelsius na qual deve deve r
+	// setcelsius na qual deve enviar um double celsius para outra funcao.
 	public void setCelsius(double celsius) {
 		this.celsius = celsius;
 	}
 
+	//conta para conversao de temperatura para Fahrenheit
 	public double converterParaFahrenheit() {
-		double Fahrenheit = celsius * (9 / 5) + 32;
+		double Fahrenheit = celsius * 1.8 + 32;
 		return Fahrenheit;
 	}
 
+	//Conta para conversao de temperatura para Kelvin
 	public double converterParaKelvin() {
 		double Kelvin = celsius + 273.15;
 		return Kelvin;
 	}
-	
-	public String[] mostrarTemperaturaKelvin() {
-		return (null);
-	}
-
-	public void teste() {
-		System.out.println("Fahrenheit: " + converterParaFahrenheit());
-	}
-
 }
